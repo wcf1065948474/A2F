@@ -1,0 +1,181 @@
+--------------Options--------------
+angle: False
+attn_layer: [2, 3]
+batchSize: 2
+checkpoints_dir: ./result
+continue_train: False
+dataroot: ./dataset/FaceForensics
+dataset_mode: face
+debug: False
+display_env: face
+display_freq: 100
+display_id: 1
+display_port: 8096
+display_single_pane_ncols: 0
+display_winsize: 256
+eval_iters_freq: 1000
+fid_gt_path: None
+frames_D_V: 3
+gan_mode: lsgan
+gpu_ids: 0,1
+image_nc: 3
+init_type: orthogonal
+isTrain: True
+iter_count: 1
+kernel_size: {'2': 5, '3': 3}
+lambda_content: 0.5
+lambda_correct: 5.0
+lambda_g: 2.0
+lambda_rec: 5.0
+lambda_regularization: 0.0025
+lambda_style: 500.0
+layers: 3
+load_size: 256
+lr: 0.0001
+lr_policy: lambda
+max_dataset_size: 9223372036854775807
+max_frames_per_gpu: 6
+max_t_step: 1
+model: face
+nThreads: 8
+n_frames_pre_load_test: 1
+n_frames_total: 30
+name: face
+netD: res
+netD_V: res
+netG: face
+niter: 5000000
+niter_decay: 0
+no_canny_edge: False
+no_dist_map: False
+no_html: False
+old_size: (256, 256)
+phase: train
+print_freq: 100
+ratio_g2d: 0.1
+save_iters_freq: 10000
+save_latest_freq: 1000
+scale: False
+serial_batches: False
+shift: False
+structure_nc: 16
+total_test_frames: None
+use_spect_d: True
+use_spect_g: False
+which_iter: latest
+----------------End----------------
+
+
+
+
+ResDiscriminator(
+  (nonlinearity): LeakyReLU(negative_slope=0.1)
+  (block0): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(3, 32, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder0): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(32, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder1): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder2): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (conv): Conv2d(128, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+ResDiscriminator(
+  (nonlinearity): LeakyReLU(negative_slope=0.1)
+  (block0): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(6, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(6, 32, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder0): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(32, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder1): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (encoder2): ResBlockEncoder(
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.1)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): LeakyReLU(negative_slope=0.1)
+      (3): Conv2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    )
+    (shortcut): Sequential(
+      (0): AvgPool2d(kernel_size=2, stride=2, padding=0)
+      (1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (conv): Conv2d(128, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+
+
+torch.Size([2, 32, 3, 256, 256])
+torch.Size([2, 32, 3, 256, 256])
+torch.Size([2, 32, 3, 256, 256])
+torch.Size([2, 32, 3, 256, 256])
+torch.Size([2, 32, 64, 60])
